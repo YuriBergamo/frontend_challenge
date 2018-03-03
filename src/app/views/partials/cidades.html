@@ -1,0 +1,39 @@
+<md-content ng-controller="CidadesController as vm" layout="row" layout-align="center center">
+    <md-content class="md-padding" layout-align-sm="column" flex layout-align-gt-sm="row">
+        <label>Estado</label>
+        <md-select ng-model="vm.estadoSelecionado" ng-change="vm.getCidades()">
+            <md-option><em>Nenhum</em></md-option>
+            <md-option ng-repeat="estado in vm.estadosList" ng-value="estado.sigla" >
+                {{estado.nome}}
+            </md-option>
+        </md-select>
+        <md-autocomplete placeholder="Selecione uma cidade..."
+                         md-selected-item="vm.cidadeSelecionada"
+                         md-search-text="vm.searchText"
+                         md-items="item in vm.querySearch(vm.searchText)"
+                         md-item-text="item.name">
+            <md-item-template>
+                <span md-highlight-text="searchText">{{item.name}}</span>
+            </md-item-template>
+            <md-not-found>
+                Cidade não encontrada.
+            </md-not-found>
+        </md-autocomplete>
+    </md-content>
+
+    <md-content class="md-padding" flex="20">
+        <md-button  class="md-fab md-warn" aria-label="Favorito"  ng-click="vm.favoritar()" ng-show="!vm.procurandoCidades">
+            <md-tooltip md-direction="top">Favoritar</md-tooltip>
+            <i ng-show="!vm.isFavorito();" class="material-icons">favorite_border</i>
+            <i ng-show="vm.isFavorito();" class="material-icons">favorite</i>
+        </md-button>
+
+
+        <md-button class="md-fab md-primary" aria-label="Procurar" ng-click="vm.procurar()" ng-show="!vm.procurandoCidades">
+            <md-tooltip md-direction="top">Procurar clima</md-tooltip>
+            <i class="material-icons">launch</i>
+        </md-button>
+
+        <md-progress-circular md-mode="indeterminate" ng-show="vm.procurandoCidades"></md-progress-circular>
+    </md-content>
+</md-content>

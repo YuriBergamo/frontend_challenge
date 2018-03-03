@@ -1,0 +1,31 @@
+<style>
+    body {
+        background:#ededed;
+    }
+    .today {
+        font-size:6rem;
+        font-weight:100;
+        color:#666;
+    }
+    .night {
+        font-weight:300;
+    }
+</style>
+
+<md-content ng-controller="TemperaturaController as vm" layout="row" layout-align="center center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-lg-4 pull-xs-none m-x-auto m-t-5">
+                <div class="card">
+                    <div class="card-block">
+                        <h2 class="card-title m-b-2">{{vm.cidade}}</h2>
+                        <p>{{vm.clima.text.pt}}<small><span class="grey-text">&middot; Vento {{vm.clima.wind.velocity_avg}} km/h &middot; Umidade: {{vm.clima.humidity.min}}%</span></small></p>
+                        <div class="row">
+                            <div class="today text-xs-center">{{vm.getTemperatura()}}&deg;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</md-content>
