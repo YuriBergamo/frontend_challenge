@@ -25,3 +25,6 @@ Se quiser apenas executar a aplicação, baixa a pasta "dist" e execute o
     
 no browser de sua preferência.
 
+## Tecnologia
+
+Foi usado angular1 juntamente com o framework angular-material e a lib nv3d de gráficos
